@@ -11,7 +11,7 @@ const HeroSection: React.FC = () => {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          observer.disconnect(); // чтобы не дёргалось при каждом скролле
+          observer.disconnect();
         }
       },
       { threshold: 0.2 }
@@ -39,29 +39,29 @@ const HeroSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <div className="space-y-6">
-              <h1 className="text-5xl lg:text-7xl font-bold text-gray-900 leading-tight">
+              <h1 className="text-5xl max-[500px]:text-[42px] max-[380px]:text-[38px] lg:text-7xl font-bold text-gray-900 leading-tight">
                 Будущее
                 <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent block">
                   маркетплейсов
                 </span>
               </h1>
-              <p className="text-xl text-gray-600 leading-relaxed">
+              <p className="text-xl max-[500px]:text-[20px] max-[380px]:text-[16px] text-gray-600 leading-relaxed">
               FastMarket — молодая компания, работающая над созданием удобного и современного маркетплейса. Наша цель — объединить продавцов и покупателей на одной платформе и сделать процесс покупок максимально простым и быстрым.
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
-                <Play className="mr-2 h-5 w-5" />
+             <button className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 max-[400px]:px-4 max-[400px]:py-2.5 max-[320px]:px-4 max-[320px]:py-4 max-[320px]:text-[18px] rounded-full text-lg font-semibold hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
+                <Play className="mr-2 h-5 w-5 max-[320px]:h-4 max-[320px]:w-4" />
                 Смотреть презентацию
               </button>
-              <button className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-full text-lg font-semibold hover:border-blue-600 hover:text-blue-600 transition-all duration-300">
-                Узнать больше
+              <button className="border-2 border-gray-300 text-gray-700 px-6 py-3 max-[400px]:px-4 max-[400px]:py-2.5 max-[320px]:px-4 max-[320px]:py-4 max-[320px]:text-[18px] rounded-full text-lg font-semibold hover:border-blue-600 hover:text-blue-600 transition-all duration-300">
+                Стать партнером
               </button>
             </div>
 
             {/* Quick Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-8">
+            <div className="grid grid-cols-3 max-[555px]:grid-cols-1 gap-6 pt-8">
               <div className="text-center">
                 <div className="text-2xl font-bold text-blue-600">В разработке</div>
                 <div className="text-sm text-gray-600">Платформа</div>
@@ -78,11 +78,11 @@ const HeroSection: React.FC = () => {
           </div>
 
           <div className="relative">
-            <div className="relative z-10 bg-white rounded-3xl shadow-2xl p-8 transform rotate-3 hover:rotate-0 transition-transform duration-500">
+            <div className="relative z-10 bg-white rounded-3xl shadow-2xl p-8 max-[400px]:p-4 transform rotate-3 hover:rotate-0 transition-transform duration-500">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <div className="text-lg font-semibold">Наша цель</div>
-                  <div className="text-2xl text-green-500">Удобные покупки</div>
+                  <div className="text-lg max-[400px]:text-[18px] font-semibold">Наша цель</div>
+                  <div className="text-2xl max-[400px]:text-[18px] text-green-500">Удобные покупки</div>
                 </div>
                 <div className="h-32 bg-gradient-to-r from-blue-100 to-purple-100 rounded-lg flex items-end justify-center">
                   <BarChart3 className="h-24 w-24 text-blue-600 opacity-50" />

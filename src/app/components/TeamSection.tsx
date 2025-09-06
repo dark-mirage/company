@@ -34,13 +34,16 @@ const TeamSection: React.FC = () => {
   );
 
   return (
-    <section id="team" className="py-20 bg-gray-50">
+    <section id="team" className="py-20 max-[400px]:py-10 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Наша команда
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+           <h2 className="font-bold text-gray-900 mb-3 md:mb-6 text-3xl lg:text-4xl">
+              Наша{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+                команда
+              </span>
+            </h2>
+          <p className="text-gray-600 mx-auto text-[14px] sm:text-base md:text-xl  max-w-md sm:max-w-xl md:max-w-2xl">
             Опытные профессионалы, которые строят будущее электронной коммерции
           </p>
         </div>
