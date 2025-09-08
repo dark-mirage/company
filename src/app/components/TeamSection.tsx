@@ -121,9 +121,9 @@ const TeamSection: React.FC = () => {
           {team.map((member, index) => {
             const isVisible = visibleCards[index];
             return (
-              <div
+             <div
                 key={index}
-                ref={(el) => (cardRefs.current[index] = el)} // ✅ безопасно записываем ref
+                ref={(el) => { cardRefs.current[index] = el; }} // ✅ безопасно для TS
                 className={`bg-white rounded-2xl p-6 shadow-lg text-center transform transition-all duration-700 ease-out
                   ${isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-12 scale-95"}
                   hover:scale-105 hover:shadow-2xl`}
