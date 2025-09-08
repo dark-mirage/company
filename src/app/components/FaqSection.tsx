@@ -1,10 +1,11 @@
 "use client";
-import React, { useState } from "react";
-import { ChevronDown, ChevronUp, MessageCircle, Send } from "lucide-react";
+import React, { useState, useEffect, useRef } from "react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 const FAQSection: React.FC = () => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
-  const [formData, setFormData] = useState({ name: "", email: "", question: "" });
+  const [visible, setVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
 
   const faqData = [
     {
@@ -17,22 +18,52 @@ const FAQSection: React.FC = () => {
       answer:
         "Наша логистическая сеть включает собственные курьеры, партнёрства с перевозчиками и сеть пунктов выдачи 24/7. Все заказы обрабатываются и отправляются в день поступления.",
     },
+    {
+      question: "Какова бизнес-модель FastMarket?",
+      answer:
+      "Мы зарабатываем на комиссии с продаж, на доставке и премиальных услугах для продавцов"
+    },
+    {
+      question: "Как планируется использовать инвестиции?",
+      answer: "На расширение логистической сети, маркетинг, развитие IT-платформы и привлечение новых продавцов."
+    },
+    {
+      question: "Какие преимущества FastMarket перед конкурентами?",
+      answer: "Быстрая доставка за 1 день, удобство для продавцов и покупателей, собственная логистика и фокус на ключевых рынках."
+    },
   ];
 
-  const handleFormSubmit = () => {
-    if (formData.name && formData.email && formData.question) {
-      alert("Спасибо! Мы ответим в ближайшее время.");
-      setFormData({ name: "", email: "", question: "" });
-    } else {
-      alert("Пожалуйста, заполните все поля");
-    }
-  };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisible(true);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-50 to-gray-100">
+    <section
+      ref={sectionRef}
+      className="py-20 bg-gradient-to-b from-gray-50 to-gray-100"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10 sm:mb-12 md:mb-16 px-4">
-           <h2 className="font-bold text-gray-900 mb-3 md:mb-6 text-3xl lg:text-4xl">
+        {/* Заголовок */}
+        <div
+          className={`text-center mb-10 sm:mb-12 md:mb-16 px-4 transition-all duration-700 ease-out
+          ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        >
+          <h2 className="font-bold text-gray-900 mb-3 md:mb-6 text-3xl lg:text-4xl">
             Частые{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600">
               Вопросы
@@ -46,7 +77,12 @@ const FAQSection: React.FC = () => {
             Ответы на самые важные вопросы о FastMarket
           </p>
         </div>
-        <div className="grid grid-cols-1 justify-center gap-8 sm:gap-12 items-start px-3 sm:px-0">
+
+        {/* Список FAQ */}
+        <div
+          className={`grid grid-cols-1 justify-center gap-8 sm:gap-12 items-start px-3 sm:px-0 transition-all duration-700 ease-out delay-200
+          ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        >
           <div className="space-y-4 max-w-3xl w-full justify-self-center">
             {faqData.map((item, index) => (
               <div
@@ -56,7 +92,7 @@ const FAQSection: React.FC = () => {
                 <button
                   className="w-full flex justify-between items-center text-left 
                             px-3 py-3 sm:px-6 sm:py-5 md:px-8 md:py-6 
-                            hover:bg-gray-50"
+                            hover:bg-gray-50 transition"
                   onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
                 >
                   <h3
@@ -66,18 +102,23 @@ const FAQSection: React.FC = () => {
                     {item.question}
                   </h3>
                   {openFAQ === index ? (
-                    <ChevronUp className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600 flex-shrink-0" />
+                    <ChevronUp className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600 flex-shrink-0 transition-transform duration-300 rotate-180" />
                   ) : (
-                    <ChevronDown className="h-5 w-5 sm:h-6 sm:w-6 text-gray-400 flex-shrink-0" />
+                    <ChevronDown className="h-5 w-5 sm:h-6 sm:w-6 text-gray-400 flex-shrink-0 transition-transform duration-300" />
                   )}
                 </button>
-                {openFAQ === index && (
+
+                {/* Ответ с анимацией */}
+                <div
+                  className={`overflow-hidden transition-all duration-500 ease-in-out 
+                    ${openFAQ === index ? "max-h-40 opacity-100" : "max-h-0 opacity-0"}`}
+                >
                   <div className="px-3 sm:px-6 md:px-8 pb-4 sm:pb-6 border-t border-gray-100">
                     <p className="text-gray-600 pt-3 text-[13px] sm:text-[14px]">
                       {item.answer}
                     </p>
                   </div>
-                )}
+                </div>
               </div>
             ))}
           </div>

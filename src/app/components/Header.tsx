@@ -7,27 +7,34 @@ const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navigation = [
+  const desktopNav = [
     { name: 'О компании', href: '#about' },
+    { name: 'Цели', href: '#stats'},
     { name: 'Инвесторам', href: '#investors' },
-    // { name: 'Новости', href: '#news' },
+    { name: 'Контакты', href: '#contacts' },
+  ];
+
+  const mobileNav = [
+    { name: 'Преимущества', href: '#advantages' },
+    { name: 'Для кого', href: '#audience' },
     { name: 'Команда', href: '#team' },
-    { name: 'Контакты', href: '#contacts' }
+    { name: 'Faq', href: '#Faq' },
   ];
 
   return (
-    <header className={`fixed w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/90 backdrop-blur-md shadow-lg' : 'bg-transparent'
-    }`}>
+    <header
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-white/90 backdrop-blur-md shadow-lg' : 'bg-transparent'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
+          {/* Logo */}
           <div className="flex items-center space-x-2">
             <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
               <Globe className="h-6 w-6 text-white" />
@@ -39,7 +46,7 @@ const Header: React.FC = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            {navigation.map((item) => (
+            {desktopNav.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
@@ -50,10 +57,15 @@ const Header: React.FC = () => {
             ))}
           </nav>
 
+          {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-4">
-            <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all duration-200 transform hover:scale-105">
-              Инвестировать
-            </button>
+            <a
+              href="/pitchdeck/TurkeyExpress.pdf"
+              download
+              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all duration-200 transform hover:scale-105"
+            >
+              Pitch Deck
+            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -69,7 +81,8 @@ const Header: React.FC = () => {
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 bg-white rounded-lg shadow-lg mt-2">
-              {navigation.map((item) => (
+              {/* Основные пункты */}
+              {desktopNav.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
@@ -79,9 +92,28 @@ const Header: React.FC = () => {
                   {item.name}
                 </a>
               ))}
-              <button className="w-full mt-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full">
-                Инвестировать
-              </button>
+
+              {/* Дополнительно */}
+              {mobileNav.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.name}
+                </a>
+              ))}
+
+              {/* Mobile CTA */}
+              <a
+                href="/pitchdeck/TurkeyExpress.pdf"
+                download
+                className="block w-full mt-2 text-center bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all duration-200"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Pitch Deck
+              </a>
             </div>
           </div>
         )}

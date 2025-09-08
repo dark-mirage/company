@@ -1,23 +1,48 @@
 "use client";
-import React, { useState, useEffect } from 'react'; 
-import { TrendingUp, BarChart3, DollarSign, } from 'lucide-react';
+import React, { useEffect, useRef, useState } from "react";
+import { TrendingUp, BarChart3, DollarSign } from "lucide-react";
 
 const InvestorsSection: React.FC = () => {
+  const [visible, setVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => {
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
+    };
+  }, []);
+
   return (
-      <section
+    <section
+      ref={sectionRef}
       id="investors"
       className="py-20 max-[400px]:py-10 bg-gradient-to-br from-blue-50 to-purple-50"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Заголовок */}
-        <div className="text-center mb-16">
-           <h2 className="font-bold text-gray-900 mb-3 md:mb-6 text-3xl lg:text-4xl">
+        <div
+          className={`text-center mb-16 transition-all duration-700 ${
+            visible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 -translate-y-8"
+          }`}
+        >
+          <h2 className="font-bold text-gray-900 mb-3 md:mb-6 text-3xl lg:text-4xl">
             Для{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
               Инвесторов
             </span>
           </h2>
-          <p className="text-gray-600 mx-auto  text-[14px] sm:text-base md:text-xl  max-w-md sm:max-w-xl md:max-w-2xl">
+          <p className="text-gray-600 mx-auto text-[14px] sm:text-base md:text-xl max-w-md sm:max-w-xl md:max-w-2xl">
             FastMarket — стартап в сфере электронной коммерции. Мы ищем партнёров
             и инвесторов, чтобы вместе построить современную платформу для
             онлайн-торговли.
@@ -26,101 +51,86 @@ const InvestorsSection: React.FC = () => {
 
         {/* Карточки */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 mb-8 md:mb-12 lg:mb-16">
-          {/* Статус проекта */}
-          <div className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 shadow-md md:shadow-lg">
-            <div className="w-10 h-10 md:w-12 md:h-12 bg-green-100 rounded-lg md:rounded-xl flex items-center justify-center mb-4 md:mb-6">
-              <DollarSign className="h-5 w-5 md:h-6 md:w-6 text-green-600" />
-            </div>
-            <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3 md:mb-4">
-              Статус проекта
-            </h3>
-            <div className="space-y-2 md:space-y-3">
-              <div className="flex justify-between items-start">
-                <span className="text-sm md:text-base text-gray-600">Этап:</span>
-                <span className="text-sm md:text-base font-semibold text-right ml-2">
-                  Разработка платформы
-                </span>
+          {[
+            {
+              icon: <DollarSign className="h-5 w-5 md:h-6 md:w-6 text-green-600" />,
+              bg: "bg-green-100",
+              title: "Статус проекта",
+              content: [
+                ["Этап:", "Разработка платформы"],
+                ["Планы на 2025:", "Запуск бета-версии", "text-green-600"],
+                ["Цель:", "Привлечение партнёров и инвесторов"],
+              ],
+            },
+            {
+              icon: <BarChart3 className="h-5 w-5 md:h-6 md:w-6 text-blue-600" />,
+              bg: "bg-blue-100",
+              title: "Рыночные перспективы",
+              content: [
+                ["Сектор:", "Электронная коммерция"],
+                ["Потенциал:", "Рост онлайн-торговли в СНГ и Турции"],
+                ["Наш фокус:", "Удобство и быстрая логистика", "text-blue-600"],
+              ],
+            },
+            {
+              icon: <TrendingUp className="h-5 w-5 md:h-6 md:w-6 text-purple-600" />,
+              bg: "bg-purple-100",
+              title: "Перспективы роста",
+              content: [
+                ["Прогноз:", "Запуск и первые партнёры"],
+                ["Планы:", "Выход на новые рынки"],
+                ["Приоритет:", "Инвестиции в технологию"],
+              ],
+            },
+          ].map((card, i) => (
+            <div
+              key={i}
+              className={`bg-white rounded-xl md:rounded-2xl p-4 md:p-6 shadow-md md:shadow-lg transform transition-all duration-700 ${
+                visible
+                  ? "opacity-100 translate-y-0 translate-x-0 rotate-0"
+                  : i === 0
+                  ? "opacity-0 translate-y-8 -translate-x-10 -rotate-2"
+                  : i === 1
+                  ? "opacity-0 translate-y-8"
+                  : "opacity-0 translate-y-8 translate-x-10 rotate-2"
+              }`}
+              style={{ transitionDelay: visible ? `${i * 150}ms` : "0ms" }}
+            >
+              <div
+                className={`w-10 h-10 md:w-12 md:h-12 ${card.bg} rounded-lg md:rounded-xl flex items-center justify-center mb-4 md:mb-6`}
+              >
+                {card.icon}
               </div>
-              <div className="flex justify-between items-start">
-                <span className="text-sm md:text-base text-gray-600">
-                  Планы на 2025:
-                </span>
-                <span className="text-sm md:text-base font-semibold text-green-600 text-right ml-2">
-                  Запуск бета-версии
-                </span>
-              </div>
-              <div className="flex justify-between items-start">
-                <span className="text-sm md:text-base text-gray-600">Цель:</span>
-                <span className="text-sm md:text-base font-semibold text-right ml-2">
-                  Привлечение партнёров и инвесторов
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Рыночные перспективы */}
-          <div className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 shadow-md md:shadow-lg">
-            <div className="w-10 h-10 md:w-12 md:h-12 bg-blue-100 rounded-lg md:rounded-xl flex items-center justify-center mb-4 md:mb-6">
-              <BarChart3 className="h-5 w-5 md:h-6 md:w-6 text-blue-600" />
-            </div>
-            <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3 md:mb-4">
-              Рыночные перспективы
-            </h3>
-            <div className="space-y-2 md:space-y-3">
-              <div className="flex justify-between items-start">
-                <span className="text-sm md:text-base text-gray-600">Сектор:</span>
-                <span className="text-sm md:text-base font-semibold text-right ml-2">
-                  Электронная коммерция
-                </span>
-              </div>
-              <div className="flex justify-between items-start">
-                <span className="text-sm md:text-base text-gray-600">Потенциал:</span>
-                <span className="text-sm md:text-base font-semibold text-right ml-2">
-                  Рост онлайн-торговли в СНГ и Турции
-                </span>
-              </div>
-              <div className="flex justify-between items-start">
-                <span className="text-sm md:text-base text-gray-600">Наш фокус:</span>
-                <span className="text-sm md:text-base font-semibold text-blue-600 text-right ml-2">
-                  Удобство и быстрая логистика
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Перспективы роста */}
-          <div className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 shadow-md md:shadow-lg">
-            <div className="w-10 h-10 md:w-12 md:h-12 bg-purple-100 rounded-lg md:rounded-xl flex items-center justify-center mb-4 md:mb-6">
-              <TrendingUp className="h-5 w-5 md:h-6 md:w-6 text-purple-600" />
-            </div>
-            <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3 md:mb-4">
-              Перспективы роста
-            </h3>
-            <div className="space-y-2 md:space-y-3">
-              <div className="flex justify-between items-start">
-                <span className="text-sm md:text-base text-gray-600">Прогноз:</span>
-                <span className="text-sm md:text-base font-semibold text-right ml-2">
-                  Запуск и первые партнёры
-                </span>
-              </div>
-              <div className="flex justify-between items-start">
-                <span className="text-sm md:text-base text-gray-600">Планы:</span>
-                <span className="text-sm md:text-base font-semibold text-right ml-2">
-                  Выход на новые рынки
-                </span>
-              </div>
-              <div className="flex justify-between items-start">
-                <span className="text-sm md:text-base text-gray-600">Приоритет:</span>
-                <span className="text-sm md:text-base font-semibold text-right ml-2">
-                  Инвестиции в технологию
-                </span>
+              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3 md:mb-4">
+                {card.title}
+              </h3>
+              <div className="space-y-2 md:space-y-3">
+                {card.content.map(([label, value, color], idx) => (
+                  <div key={idx} className="flex justify-between items-start">
+                    <span className="text-sm md:text-base text-gray-600">
+                      {label}
+                    </span>
+                    <span
+                      className={`text-sm md:text-base font-semibold text-right ml-2 ${
+                        color || ""
+                      }`}
+                    >
+                      {value}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
+          ))}
         </div>
 
         {/* Инвестиционное предложение */}
-        <div className="bg-white rounded-2xl p-8 shadow-lg">
+        <div
+          className={`bg-white rounded-2xl p-8 shadow-lg transform transition-all duration-700 ${
+            visible ? "opacity-100 scale-100" : "opacity-0 scale-95"
+          }`}
+          style={{ transitionDelay: visible ? "500ms" : "0ms" }}
+        >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
@@ -133,24 +143,16 @@ const InvestorsSection: React.FC = () => {
                 электронной коммерции.
               </p>
               <div className="space-y-3">
-                <div className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
-                  <span className="text-gray-700">
-                    Фокус на логистике и удобстве покупателей
-                  </span>
-                </div>
-                <div className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
-                  <span className="text-gray-700">
-                    Создание условий для продавцов
-                  </span>
-                </div>
-                <div className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
-                  <span className="text-gray-700">
-                    Потенциал масштабирования в регионе
-                  </span>
-                </div>
+                {[
+                  "Фокус на логистике и удобстве покупателей",
+                  "Создание условий для продавцов",
+                  "Потенциал масштабирования в регионе",
+                ].map((point, idx) => (
+                  <div key={idx} className="flex items-center">
+                    <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
+                    <span className="text-gray-700">{point}</span>
+                  </div>
+                ))}
               </div>
             </div>
             <div className="text-center">
@@ -168,4 +170,4 @@ const InvestorsSection: React.FC = () => {
   );
 };
 
-export default InvestorsSection
+export default InvestorsSection;
