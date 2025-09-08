@@ -25,7 +25,7 @@ const HeroSection: React.FC = () => {
   return (
     <section
      ref={sectionRef}
-      className={`min-h-screen relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-purple-50 transition-all duration-1000 ${
+      className={`min-h-screen relative overflow-x-hidden bg-gradient-to-br from-blue-50 via-white to-purple-50 transition-all duration-1000 overflow-x-hidden ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       }`}>
 
@@ -55,9 +55,11 @@ const HeroSection: React.FC = () => {
                 <Play className="mr-2 h-5 w-5 max-[320px]:h-4 max-[320px]:w-4" />
                 Смотреть презентацию
               </button>
-              <button className="border-2 border-gray-300 text-gray-700 px-6 py-3 max-[400px]:px-4 max-[400px]:py-2.5 max-[320px]:px-4 max-[320px]:py-4 max-[320px]:text-[18px] rounded-full text-lg font-semibold hover:border-blue-600 hover:text-blue-600 transition-all duration-300">
-                Стать партнером
-              </button>
+              <a href="#contacts">
+                <button className="w-full border-2 border-gray-300 text-gray-700 px-6 py-3 max-[400px]:px-4 max-[400px]:py-2.5 max-[320px]:px-4 max-[320px]:py-4 max-[320px]:text-[18px] rounded-full text-lg font-semibold hover:border-blue-600 hover:text-blue-600 transition-all duration-300">
+                  Стать партнером
+                </button>
+              </a>
             </div>
 
             {/* Quick Stats */}

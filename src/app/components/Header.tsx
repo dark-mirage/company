@@ -23,7 +23,7 @@ const Header: React.FC = () => {
     { name: 'Преимущества', href: '#advantages' },
     { name: 'Для кого', href: '#audience' },
     { name: 'Команда', href: '#team' },
-    { name: 'Faq', href: '#Faq' },
+    { name: 'Faq', href: '#faq' },
   ];
 
   return (
@@ -80,7 +80,7 @@ const Header: React.FC = () => {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-white rounded-lg shadow-lg mt-2">
+            <div className="flex flex-col items-center px-2 pt-2 pb-3 space-y-1 bg-white rounded-lg shadow-lg mt-2">
               {/* Основные пункты */}
               {desktopNav.map((item) => (
                 <a

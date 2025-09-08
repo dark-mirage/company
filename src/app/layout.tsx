@@ -4,7 +4,7 @@ import Header from './components/Header';
 
 export const metadata: Metadata = {
   title: 'FastMarket',
-  description: 'Инвестиционная платформа',
+  description: 'Маркетплейс нового поколения',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

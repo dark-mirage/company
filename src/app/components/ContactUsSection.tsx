@@ -74,7 +74,7 @@ const ContactUsSection: React.FC = () => {
     <section
       ref={sectionRef}
       id="contacts"
-      className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-purple-50 to-blue-50"
+      className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-purple-50 to-blue-50 overflow-x-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Заголовок */}
@@ -111,7 +111,7 @@ const ContactUsSection: React.FC = () => {
               <div>
                 <p className="text-gray-600 text-sm sm:text-base">Email</p>
                 <p className="font-semibold text-gray-900 text-sm sm:text-base">
-                  info@markethub.com
+                  antalyamarketplace@gmail.com
                 </p>
               </div>
             </div>

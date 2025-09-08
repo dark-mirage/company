@@ -25,7 +25,7 @@ const InvestorsSection: React.FC = () => {
     <section
       ref={sectionRef}
       id="investors"
-      className="py-20 max-[400px]:py-10 bg-gradient-to-br from-blue-50 to-purple-50"
+      className="py-20 max-[400px]:py-10 bg-gradient-to-br from-blue-50 to-purple-50 overflow-x-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Заголовок */}

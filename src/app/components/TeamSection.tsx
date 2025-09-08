@@ -94,7 +94,7 @@ const TeamSection: React.FC = () => {
     <section
       id="team"
       ref={sectionRef}
-      className="py-20 max-[400px]:py-10 bg-gray-50"
+      className="py-20 max-[400px]:py-10 bg-gray-50 overflow-x-hidden "
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">

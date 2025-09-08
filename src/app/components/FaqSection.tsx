@@ -54,8 +54,9 @@ const FAQSection: React.FC = () => {
 
   return (
     <section
+      id="faq"
       ref={sectionRef}
-      className="py-20 bg-gradient-to-b from-gray-50 to-gray-100"
+      className="py-20 bg-gradient-to-b from-gray-50 to-gray-100 overflow-x-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Заголовок */}
@@ -110,7 +111,7 @@ const FAQSection: React.FC = () => {
 
                 {/* Ответ с анимацией */}
                 <div
-                  className={`overflow-hidden transition-all duration-500 ease-in-out 
+                  className={`overflow-x-hidden transition-all duration-500 ease-in-out 
                     ${openFAQ === index ? "max-h-40 opacity-100" : "max-h-0 opacity-0"}`}
                 >
                   <div className="px-3 sm:px-6 md:px-8 pb-4 sm:pb-6 border-t border-gray-100">

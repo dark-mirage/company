@@ -49,7 +49,7 @@ const NewsSection: React.FC = () => {
   );
 
   return (
-    <section id="news" className="py-20 max-[400px]:py-10 bg-white">
+    <section id="news" className="py-20 max-[400px]:py-10 bg-white overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
            <h2 className="font-bold text-gray-900 mb-3 md:mb-6 text-3xl lg:text-4xl">

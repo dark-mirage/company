@@ -63,7 +63,7 @@ const AudienceSection: React.FC = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-12 sm:py-16 md:py-20 bg-white">
+    <section id="audience" ref={sectionRef} className="py-12 sm:py-16 md:py-20 bg-white overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Заголовок */}
         <div

@@ -95,8 +95,9 @@ const AdvantagesSection: React.FC = () => {
 
   return (
     <section 
+      id="advantages"
       ref={sectionRef}
-      className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-gray-50 to-white"
+      className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-gray-50 to-white overflow-x-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div 
