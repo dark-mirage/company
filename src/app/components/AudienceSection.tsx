@@ -13,7 +13,7 @@ const AudienceSection: React.FC = () => {
       description: "Начните продавать уже сегодня",
       gradient: "from-blue-600 to-blue-700",
       popular: true,
-      link: "/seller/register",
+      link: "/sellers",
     },
     {
       icon: Factory,
@@ -23,6 +23,14 @@ const AudienceSection: React.FC = () => {
       popular: false,
       link: "/partner",
     },
+     {
+      icon: Award,
+      title: "Стать инвестором",
+      description: "Инвесторские программы",
+      gradient: "from-orange-600 to-orange-700",
+      popular: false,
+      link: "/investors",
+    },
     {
       icon: Handshake,
       title: "Хочу работать с вами",
@@ -31,14 +39,7 @@ const AudienceSection: React.FC = () => {
       popular: false,
       link: "/collaboration",
     },
-    {
-      icon: Award,
-      title: "Стать спонсором",
-      description: "Спонсорские программы",
-      gradient: "from-orange-600 to-orange-700",
-      popular: false,
-      link: "/sponsor",
-    },
+  
     {
       icon: User,
       title: "Хочу к вам на работу",
