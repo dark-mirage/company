@@ -1,8 +1,14 @@
 'use client'
+import React, { useEffect, useState } from "react";
 import useIntersectionObserver from "./hooks/useIntersectionObserver";
 
 const UseOfFundsSection = () => {
   const [sectionRef, isVisible] = useIntersectionObserver();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const colorClasses: Record<string, string> = {
     blue: "from-blue-400 to-blue-600",
@@ -45,6 +51,11 @@ const UseOfFundsSection = () => {
     { label: "Готовность к Series A", target: "✓" }
   ];
 
+  const formatAmount = (amount: number) => {
+    if (!isClient) return amount; // SSR: выводим число без форматирования
+    return new Intl.NumberFormat('en-US').format(amount); // клиент: форматируем консистентно
+  };
+
   return (
     <section
       ref={sectionRef}
@@ -64,7 +75,6 @@ const UseOfFundsSection = () => {
           </p>
         </div>
 
-        {/* Контент: левая и правая часть */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
           {/* Разбивка бюджета */}
           <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-xl">
@@ -76,7 +86,7 @@ const UseOfFundsSection = () => {
                 <div key={index} className="space-y-3">
                   <div className="flex justify-between items-center text-sm sm:text-base">
                     <span className="font-medium text-gray-700">{item.category}</span>
-                    <span className="font-bold text-gray-900">${item.amount.toLocaleString()}</span>
+                    <span className="font-bold text-gray-900">${formatAmount(item.amount)}</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2 sm:h-3 overflow-hidden">
                     <div
