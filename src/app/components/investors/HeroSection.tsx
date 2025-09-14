@@ -29,7 +29,7 @@ const HeroSection = () => {
               </span>
             </h1>
             <p className="text-xl max-[540px]:text-[18px] text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              FastMarket революционизирует онлайн-торговлю в СНГ. Присоединяйтесь к нам на раннем этапе 
+              FastMarket революционизирует онлайн-торговлю в Турции. Присоединяйтесь к нам на раннем этапе 
               и станьте частью следующего единорога в сфере e-commerce.
             </p>
           </div>
@@ -53,19 +53,19 @@ const HeroSection = () => {
           {/* Key Metrics */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12">
             <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="text-3xl font-bold text-blue-600">$500K</div>
+              <div className="text-3xl font-bold text-blue-600">$5М</div>
               <div className="text-gray-600">Цель сбора</div>
               <div className="text-sm text-gray-500 mt-2">Pre-Seed раунд</div>
             </div>
             <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="text-3xl font-bold text-purple-600">6 мес</div>
+              <div className="text-3xl font-bold text-purple-600">3-4 мес</div>
               <div className="text-gray-600">До запуска</div>
-              <div className="text-sm text-gray-500 mt-2">MVP готов к Q2 2026</div>
+              <div className="text-sm text-gray-500 mt-2">MVP готов к 2026</div>
             </div>
             <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
               <div className="text-3xl font-bold text-pink-600">10-15%</div>
-              <div className="text-gray-600">Доля за $500K</div>
-              <div className="text-sm text-gray-500 mt-2">Оценка $3.5M</div>
+              <div className="text-gray-600">Доля за $5М</div>
+              <div className="text-sm text-gray-500 mt-2">Оценка 8.5M</div>
             </div>
           </div>
         </div>

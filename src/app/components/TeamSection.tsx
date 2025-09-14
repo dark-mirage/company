@@ -12,12 +12,12 @@ const TeamSection: React.FC = () => {
   const team: TeamMemberProps[] = [
     {
       name: "Анвар Ахмедов",
-      position: "Сооснователь, Стратег",
+      position: "Founder & CEO",
       bio: "Видение, стратегия и развитие проекта",
     },
     {
       name: "Тимур Юлдашев",
-      position: "Сооснователь, Технический директор",
+      position: "Founder & CEO",
       bio: "Отвечает за IT, технологическую часть и запуск продукта",
     },
     {

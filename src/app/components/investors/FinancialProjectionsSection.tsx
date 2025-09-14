@@ -6,18 +6,17 @@ const FinancialProjectionsSection = () => {
   const [sectionRef, isVisible] = useIntersectionObserver();
 
   const revenueData = [
-    { year: "2026", revenue: 500 },
-    { year: "2027", revenue: 2500 },
-    { year: "2028", revenue: 8000 },
-    { year: "2029", revenue: 20000 },
-    { year: "2030", revenue: 45000 }
+    { year: "2026", revenue: 5 },
+    { year: "2027", revenue: 20 },
+    { year: "2028", revenue: 70 },
+    { year: "2029", revenue: 200 },
+    { year: "2030", revenue: 500 }
   ];
 
   const metrics2028 = [
     { label: "Активные пользователи", value: "2.5M", icon: Users },
     { label: "GMV", value: "$500M", icon: DollarSign },
     { label: "Продавцы", value: "50K", icon: Smartphone },
-    { label: "Страны", value: "12", icon: Globe }
   ];
 
   return (
@@ -55,11 +54,11 @@ const FinancialProjectionsSection = () => {
                   <div className="flex-1 bg-gray-400 rounded-full h-5 sm:h-6 lg:h-8 mx-2 sm:mx-3 lg:mx-4 relative overflow-hidden">
                     <div 
                       className="h-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-full transition-all duration-1000"
-                      style={{ width: isVisible ? `${(item.revenue / 45000) * 100}%` : '0%' }}
+                      style={{ width: isVisible ? `${(item.revenue / 500) * 100}%` : '0%' }}
                     ></div>
                     <div className="absolute inset-0 flex items-center px-2 sm:px-3 lg:px-4">
                       <span className="text-white font-bold text-[10px] sm:text-xs lg:text-sm">
-                        ${item.revenue}K
+                        ${item.revenue}M
                       </span>
                     </div>
                   </div>

@@ -6,6 +6,7 @@ const ContactUsSection: React.FC = () => {
   const [formData, setFormData] = useState({
     name: "",
     telegram: "",
+    whatsapp: "",
     message: "",
   });
   const [status, setStatus] = useState("");
@@ -25,7 +26,7 @@ const ContactUsSection: React.FC = () => {
 
     const botToken = "7536197306:AAFaZvjmaUTp3CADNjPGxC9n6Z_EZYCKw2g";
     const chatId = "1475856594";
-    const text = `📩 Новое сообщение с сайта:\n\n👤 Имя: ${formData.name}\n📧 Telegram: ${formData.telegram}\n💬 Сообщение: ${formData.message}`;
+    const text = `📩 Новое сообщение с сайта:\n\n👤 Имя: ${formData.name}\n📧 Telegram: ${formData.telegram}\nWhatsApp: ${formData.whatsapp}\n💬 Сообщение: ${formData.message}`;
 
     try {
       const res = await fetch(
@@ -39,7 +40,7 @@ const ContactUsSection: React.FC = () => {
 
       if (res.ok) {
         setStatus("✅ Сообщение отправлено!");
-        setFormData({ name: "", telegram: "", message: "" });
+        setFormData({ name: "", telegram: "", whatsapp: "", message: "" });
       } else {
         setStatus("❌ Ошибка при отправке");
       }
@@ -164,6 +165,14 @@ const ContactUsSection: React.FC = () => {
                 onChange={handleChange}
                 placeholder="Ваш Telegram @username"
                 required
+                className="w-full border border-gray-300 rounded-lg sm:rounded-xl px-3 py-2 sm:px-4 sm:py-3 focus:ring-2 focus:ring-blue-500 outline-none text-sm sm:text-base"
+              />
+               <input
+                type="tel"
+                name="whatsapp"
+                value={formData.whatsapp}
+                onChange={handleChange}
+                placeholder="Ваш номер Whatsapp (опционально)"
                 className="w-full border border-gray-300 rounded-lg sm:rounded-xl px-3 py-2 sm:px-4 sm:py-3 focus:ring-2 focus:ring-blue-500 outline-none text-sm sm:text-base"
               />
               <textarea

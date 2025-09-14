@@ -2,14 +2,14 @@
 import React from "react";
 import Link from "next/link";
 
-const CustomersPage: React.FC = () => {
+const CollaborationPage: React.FC = () => {
   return (
     <section className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 px-4">
       <div className="text-center space-y-6">
         <h1 className="text-5xl font-bold text-gray-900">
           Страница{" "}
           <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Customers
+            Collaboration
           </span>
         </h1>
         <p className="text-xl text-gray-600">
@@ -26,4 +26,4 @@ const CustomersPage: React.FC = () => {
   );
 };
 
-export default CustomersPage;
+export default CollaborationPage;

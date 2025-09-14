@@ -1,5 +1,5 @@
 'use client';
-import { DollarSign, CheckCircle, Zap, Brain } from "lucide-react";
+import { Truck, CheckCircle, Camera, Smartphone } from "lucide-react";
 import useIntersectionObserver from "./hooks/useIntersectionObserver";
 
 const SolutionSection = () => {
@@ -7,37 +7,36 @@ const SolutionSection = () => {
 
   const solutions = [
     {
-      icon: DollarSign,
-      title: "Низкие комиссии",
-      value: "2-5%",
+      icon: Truck, // или Globe, если хочешь глобальный акцент
+      title: "Своя логистика",
+      value: "24ч",
       features: [
-        "Прозрачное ценообразование",
-        "Нет скрытых платежей",
-        "Гибкие тарифы для малого бизнеса",
+        "Быстрая доставка за 1 день",
+        "Собственные склады и пункты выдачи",
+        "Брендированная инфраструктура",
       ],
     },
     {
-      icon: Zap,
-      title: "Скорость молнии",
-      value: "0.2с",
+      icon: Camera, // можно взять Image или Layers
+      title: "Все под нашим контролем",
+      value: "100%",
       features: [
-        "Мгновенная загрузка",
-        "Оптимизированный поиск",
-        "Быстрые платежи",
+        "Собственная фотостудия",
+        "Контент и описание товаров внутри компании",
+        "Финтех-платформа и внутренняя валюта",
       ],
     },
     {
-      icon: Brain,
-      title: "AI персонализация",
-      value: "85%",
+      icon: Smartphone,
+      title: "Удобный бизнес в 2 приложениях",
+      value: "B2B + B2C",
       features: [
-        "Умные рекомендации",
-        "Персональные предложения",
-        "Предиктивная аналитика",
+        "Отдельный маркетплейс для закупки и для продажи",
+        "Прозрачные комиссии",
+        "Полное управление со смартфона",
       ],
     },
   ];
-
   return (
     <section
       ref={sectionRef}

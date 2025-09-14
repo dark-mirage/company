@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
               Инвесторам
             </a>
             <a href="#contacts" className="hover:underline">
-              Контакты
+              Связаться
             </a>
             <a href="#about" className="hover:underline">
               О нас

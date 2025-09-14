@@ -2,6 +2,7 @@
 import React from "react";
 import Link from "next/link";
 
+
 const PartnersPage: React.FC = () => {
   return (
     <section className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-purple-50 via-white to-pink-50 px-4">
@@ -9,7 +10,7 @@ const PartnersPage: React.FC = () => {
         <h1 className="text-5xl font-bold text-gray-900">
           Страница{" "}
           <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-            Sellers
+            Partners
           </span>
         </h1>
         <p className="text-xl text-gray-600">

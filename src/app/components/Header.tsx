@@ -15,9 +15,9 @@ const Header: React.FC = () => {
 
   const desktopNav = [
     { name: 'О компании', href: '#about' },
-    { name: 'Цели', href: '#stats'},
-    { name: 'Инвесторам', href: '#investors' },
-    { name: 'Контакты', href: '#contacts' },
+    { name: 'Продавцы', href: '/sellers'},
+    { name: 'Инвесторы', href: '/investors' },
+    // { name: 'Контакты', href: '#contacts' },
   ];
 
   const mobileNav = [
@@ -65,7 +65,7 @@ const Header: React.FC = () => {
               href="#contacts"
               className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all duration-200 transform hover:scale-105"
             >
-              Контакты
+              Связаться
             </a>
           </div>
 
@@ -112,7 +112,7 @@ const Header: React.FC = () => {
                 className="block w-full mt-2 text-center bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all duration-200"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Контакты
+                Связаться
               </a>
             </div>
           </div>

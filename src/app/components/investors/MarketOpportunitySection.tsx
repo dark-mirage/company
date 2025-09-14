@@ -6,16 +6,29 @@ const MarketOpportunitySection = () => {
   const [sectionRef, isVisible] = useIntersectionObserver();
 
   const marketData = [
-    { icon: Globe, value: "$4.9T", label: "Размер рынка e-commerce", desc: "Глобальный рынок в 2024" },
-    { icon: TrendingUp, value: "15%", label: "Ежегодный рост", desc: "CAGR до 2028 года" },
-    { icon: Users, value: "2.14B", label: "Онлайн-покупатели", desc: "По всему миру" },
-    { icon: Target, value: "$45B", label: "Рынок СНГ", desc: "Потенциал региона" }
+    { icon: Globe, value: "$93.5B", label: "Объём e-commerce рынка", desc: "Ожидается в Турции в 2025 году" },
+    { icon: TrendingUp, value: "≈10.6%", label: "CAGR (2025-2030)", desc: "Темп роста в ближайшие годы" },
+    { icon: Users, value: "≈72%", label: "Доля мобильных транзакций", desc: "Покупки через смартфоны" },
+    { icon: Target, value: "TL 3.16 трлн", label: "Объём в лирах", desc: "2024, рост > 60 %" }
   ];
 
+
   const problems = [
-    { title: "Высокие комиссии", desc: "До 20% с продавцов", impact: "Снижают прибыль" },
-    { title: "Плохой UX", desc: "Устаревший интерфейс", impact: "Теряют клиентов" },
-    { title: "Закрытая экосистема", desc: "Нет гибкости", impact: "Ограничивают рост" }
+    { 
+      title: "Высокие комиссии", 
+      desc: "До 20% с продавцов", 
+      impact: "Снижают прибыль" 
+    },
+    { 
+      title: "Сложности перепродажи", 
+      desc: "Продавцы устают сами искать товар, выкупать и отвозить", 
+      impact: "Занимает время и силы" 
+    },
+    { 
+      title: "Закрытая экосистема", 
+      desc: "Текущие маркетплейсы — это просто доски объявлений", 
+      impact: "Нет дополнительных сервисов и поддержки" 
+    }
   ];
 
   return (
