@@ -1,36 +1,59 @@
 "use client";
-import React, { useState, useEffect } from 'react';
-import { Globe, Menu, X } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { Globe, Menu, X } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+interface NavItem {
+  name: string;
+  href: string;
+}
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  const pathname = usePathname();
+
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const desktopNav = [
-    { name: 'О компании', href: '#about' },
-    { name: 'Продавцы', href: '/sellers'},
-    { name: 'Инвесторы', href: '/investors' },
-    // { name: 'Контакты', href: '#contacts' },
+  // Ссылки для главной страницы
+  const mainDesktopNav: NavItem[] = [
+    { name: "О компании", href: "#about" },
+    { name: "Для кого", href: "#audience" },
+    { name: "Цели", href: "#stats"},
+    { name: "Инвесторы", href: "/investors" },
   ];
 
-  const mobileNav = [
-    { name: 'Преимущества', href: '#advantages' },
-    { name: 'Для кого', href: '#audience' },
-    { name: 'Команда', href: '#team' },
-    { name: 'Faq', href: '#faq' },
+  const mainMobileNav: NavItem[] = [
+    { name: "Преимущества", href: "#advantages" },
+    { name: "Команда", href: "#team" },
+    { name: "Faq", href: "#faq" },
   ];
+
+  // Ссылки для страницы инвесторов
+  const investorsDesktopNav: NavItem[] = [
+    { name: "Возможности", href: "#opportunity" },
+    { name: "Решение", href: "#solution" },
+    { name: "FAQ", href: "#faq" },
+  ];
+
+  const investorsMobileNav: NavItem[] = [
+    { name: "Команда", href: "#team" },
+  ];
+
+  // Выбираем ссылки в зависимости от текущего пути
+  const desktopNav = pathname === "/investors" ? investorsDesktopNav : mainDesktopNav;
+  const mobileNav = pathname === "/investors" ? investorsMobileNav : mainMobileNav;
 
   return (
     <header
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/90 backdrop-blur-md shadow-lg' : 'bg-transparent'
+        isScrolled ? "bg-white/90 backdrop-blur-md shadow-lg" : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -44,7 +67,6 @@ const Header: React.FC = () => {
               FastMarket
             </span>
           </Link>
-
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
@@ -70,10 +92,7 @@ const Header: React.FC = () => {
           </div>
 
           {/* Mobile menu button */}
-          <button
-            className="md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
+          <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
@@ -82,7 +101,6 @@ const Header: React.FC = () => {
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="flex flex-col items-center px-2 pt-2 pb-3 space-y-1 bg-white rounded-lg shadow-lg mt-2">
-              {/* Основные пункты */}
               {desktopNav.map((item) => (
                 <a
                   key={item.name}
@@ -94,7 +112,6 @@ const Header: React.FC = () => {
                 </a>
               ))}
 
-              {/* Дополнительно */}
               {mobileNav.map((item) => (
                 <a
                   key={item.name}
@@ -106,7 +123,6 @@ const Header: React.FC = () => {
                 </a>
               ))}
 
-              {/* Mobile CTA */}
               <a
                 href="#contacts"
                 className="block w-full mt-2 text-center bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all duration-200"

@@ -39,6 +39,7 @@ const SolutionSection = () => {
   ];
   return (
     <section
+      id="solution"
       ref={sectionRef}
       className={`py-16 sm:py-20 bg-white transition-all duration-1000 ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"

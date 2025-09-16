@@ -46,7 +46,7 @@ const HeroSection: React.FC = () => {
                 </span>
               </h1>
               <p className="text-xl max-[500px]:text-[20px] max-[380px]:text-[16px] text-gray-600 leading-relaxed">
-              FastMarket — молодая компания, работающая над созданием удобного и современного маркетплейса. Наша цель — объединить продавцов и покупателей на одной платформе и сделать процесс покупок максимально простым и быстрым.
+                FastMarket — современный маркетплейс нового формата, где ты можешь продавать на одном маркетплейсе и покупать оптом на другом, полностью онлайн. Доставка за один день и встроенные финтех-инструменты делают торговлю простой, быстрой и безопасной. Мы создаём пространство, где продавцы и покупатели находят друг друга в один клик, а бизнес растёт без лишней суеты.
               </p>
             </div>
 
@@ -57,7 +57,7 @@ const HeroSection: React.FC = () => {
               </button>
               <a href="#contacts">
                 <button className="w-full border-2 border-gray-300 text-gray-700 px-6 py-3 max-[400px]:px-4 max-[400px]:py-2.5 max-[320px]:px-4 max-[320px]:py-4 max-[320px]:text-[18px] rounded-full text-lg font-semibold hover:border-blue-600 hover:text-blue-600 transition-all duration-300">
-                  Стать партнером
+                  Инвестировать
                 </button>
               </a>
             </div>

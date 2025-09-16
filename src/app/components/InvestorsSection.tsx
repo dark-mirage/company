@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import { TrendingUp, BarChart3, DollarSign } from "lucide-react";
-
+import Link from "next/link";
 const InvestorsSection: React.FC = () => {
   const [visible, setVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement | null>(null);
@@ -126,7 +126,7 @@ const InvestorsSection: React.FC = () => {
 
         {/* Инвестиционное предложение */}
         <div
-          className={`bg-white rounded-2xl p-8 shadow-lg transform transition-all duration-700 ${
+          className={`bg-white rounded-2xl p-8 mb-8 shadow-lg transform transition-all duration-700 ${
             visible ? "opacity-100 scale-100" : "opacity-0 scale-95"
           }`}
           style={{ transitionDelay: visible ? "500ms" : "0ms" }}
@@ -165,6 +165,9 @@ const InvestorsSection: React.FC = () => {
             </div>
           </div>
         </div>
+        <button className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 max-[400px]:px-4 max-[400px]:py-2.5 max-[320px]:px-4 max-[320px]:py-4 max-[320px]:text-[18px] rounded-full text-lg font-semibold hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center align-center justify-self-center">
+          <Link href="/investors">Подробнее</Link>
+        </button>
       </div>
     </section>
   );
